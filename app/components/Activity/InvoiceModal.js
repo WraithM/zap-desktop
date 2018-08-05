@@ -14,6 +14,8 @@ import Countdown from './Countdown'
 
 import styles from './InvoiceModal.scss'
 
+import { btc } from 'lib/utils'
+
 const InvoiceModal = ({
   invoice,
   ticker,
@@ -55,7 +57,7 @@ const InvoiceModal = ({
             <section className={styles.amount}>
               <h1>
                 <Value
-                  value={invoice.value}
+                  value={invoice.settled ? btc.millisatoshisToSatoshis(invoice.amt_paid) : invoice.value}
                   currency={ticker.currency}
                   currentTicker={currentTicker}
                 />

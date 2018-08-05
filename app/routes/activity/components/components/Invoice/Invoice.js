@@ -38,11 +38,19 @@ const Invoice = ({ invoice, ticker, currentTicker, showActivityModal, currencyNa
         <Value
           value={invoice.settled ? btc.millisatoshisToSatoshis(invoice.amt_paid) : invoice.value}
           currency={ticker.currency}
-          currentTicker={currentTicker} />
+          currentTicker={currentTicker}
+        />
         <i> {currencyName}</i>
       </span>
       <span>
-        <span>${btc.convert('sats', 'usd', invoice.settled ? btc.millisatoshisToSatoshis(invoice.amt_paid) : invoice.value, currentTicker.price_usd)}</span>
+        <span>
+          ${btc.convert(
+            'sats',
+            'usd',
+            invoice.settled ? btc.millisatoshisToSatoshis(invoice.amt_paid) : invoice.value,
+            currentTicker.price_usd
+          )}
+        </span>
       </span>
     </div>
   </div>

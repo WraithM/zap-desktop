@@ -10,11 +10,10 @@ import { showNotification } from 'lib/utils/notifications'
 import FaAngleDown from 'react-icons/lib/fa/angle-down'
 
 import Value from 'components/Value'
+import { btc } from 'lib/utils'
 import Countdown from './Countdown'
 
 import styles from './InvoiceModal.scss'
-
-import { btc } from 'lib/utils'
 
 const InvoiceModal = ({
   invoice,
@@ -57,7 +56,9 @@ const InvoiceModal = ({
             <section className={styles.amount}>
               <h1>
                 <Value
-                  value={invoice.settled ? btc.millisatoshisToSatoshis(invoice.amt_paid) : invoice.value}
+                  value={
+                    invoice.settled ? btc.millisatoshisToSatoshis(invoice.amt_paid) : invoice.value
+                  }
                   currency={ticker.currency}
                   currentTicker={currentTicker}
                 />
